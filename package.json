@@ -1,0 +1,29 @@
+{
+  "name": "point-fetch",
+  "version": "1.0.0-beta",
+  "author": "Hassan Raza",
+  "description": "Javascript library for fetching data easy to use with events",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "keywords": [
+    "point-fetch"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hr1938082/PointFetch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hr1938082/PointFetch/issues"
+  },
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "axios": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.0.0"
+  }
+}

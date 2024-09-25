@@ -4,8 +4,8 @@
   "author": "Hassan Raza",
   "description": "Javascript library for fetching data easy to use with events",
   "license": "MIT",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "point-fetch"
   ],
@@ -15,6 +15,9 @@
   },
   "bugs": {
     "url": "https://github.com/hr1938082/PointFetch/issues"
+  },
+  "peerDependencies": {
+    "axios": "^1.0.0"
   },
   "scripts": {
     "build": "tsc"

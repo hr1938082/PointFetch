@@ -34,7 +34,7 @@ export interface Config extends BaseConfig {
     method: Methods;
 }
 
-const PointFetch = (options: Config) => {
+const Fetch = (options: Config) => {
     const URL = options.baseURL ? options.baseURL + options.endPoint : options.url;
     typeof options.onStart === 'function' && options.onStart();
     const axiosHeaders: Record<string, any> = {};
@@ -67,13 +67,13 @@ const PointFetch = (options: Config) => {
         .finally(() => options.onFinish && options.onFinish())
 }
 
-const get = (options: BaseConfig) => PointFetch({ method: 'get', ...options, });
-const post = (options: BaseConfig) => PointFetch({ method: 'post', ...options });
-const put = (options: BaseConfig) => PointFetch({ method: 'put', ...options });
-const patch = (options: BaseConfig) => PointFetch({ method: 'patch', ...options });
-const destroy = (options: BaseConfig) => PointFetch({ method: 'delete', ...options });
+const get = (options: BaseConfig) => Fetch({ method: 'get', ...options, });
+const post = (options: BaseConfig) => Fetch({ method: 'post', ...options });
+const put = (options: BaseConfig) => Fetch({ method: 'put', ...options });
+const patch = (options: BaseConfig) => Fetch({ method: 'patch', ...options });
+const destroy = (options: BaseConfig) => Fetch({ method: 'delete', ...options });
 
-export default PointFetch;
+export default Fetch;
 
 export {
     get,

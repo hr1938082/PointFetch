@@ -1,6 +1,6 @@
 {
     "name": "point-fetch",
-    "version": "1.0.0-beta.0.1",
+    "version": "1.0.0-beta.1",
     "author": "Hassan Raza",
     "description": "Javascript library for fetching data easy to use with events",
     "license": "MIT",

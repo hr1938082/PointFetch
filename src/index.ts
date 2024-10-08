@@ -1,4 +1,4 @@
-import axios, { AxiosProgressEvent, AxiosResponse } from "axios";
+import axios, { AxiosHeaders, AxiosProgressEvent, AxiosResponse } from "axios";
 
 export type Methods = 'get' | 'post' | 'put' | 'patch' | 'delete';
 
@@ -24,8 +24,8 @@ export interface BaseOptions {
     baseURL?: string;
     endPoint?: string;
     url?: string;
-    headers?: HeadersInit;
     data?: any;
+    authorization?: string;
 }
 
 export type BaseConfig = BaseOptions & Events
@@ -37,16 +37,17 @@ export interface Config extends BaseConfig {
 const Fetch = (options: Config) => {
     const URL = options.baseURL ? options.baseURL + options.endPoint : options.url;
     typeof options.onStart === 'function' && options.onStart();
-    const axiosHeaders: Record<string, any> = {};
-    if (options.headers && options.headers instanceof Headers) {
-        const headers = options.headers;
-        headers.forEach((value, key) => {
-            axiosHeaders[key] = value
-        })
+    const headers = new AxiosHeaders();
+    headers.set('Accept', 'application/json');
+    if (options.method !== 'get') {
+        headers.set('Content-Type', 'application/json');
+    }
+    if (options.authorization) {
+        headers.set('Authorization', options.authorization)
     }
     axios({
         url: URL,
-        headers: axiosHeaders,
+        headers: headers,
         method: options.method,
         data: JSON.stringify(options.data),
         signal: options.signal,

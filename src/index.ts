@@ -81,5 +81,5 @@ export {
     post,
     put,
     patch,
-    destroy as delete
+    destroy
 }

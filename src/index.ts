@@ -35,8 +35,7 @@ export interface Config extends BaseConfig {
 }
 
 const Fetch = (options: Config) => {
-    const URL = options.baseURL ? options.baseURL + options.endPoint : options.url;
-    typeof options.onStart === 'function' && options.onStart();
+    options.onStart && options.onStart();
     const headers = new AxiosHeaders();
     headers.set('Accept', 'application/json');
     if (options.method !== 'get') {
@@ -46,7 +45,8 @@ const Fetch = (options: Config) => {
         headers.set('Authorization', options.authorization)
     }
     axios({
-        url: URL,
+        baseURL: options.baseURL,
+        url: options.url ?? options.endPoint,
         headers: headers,
         method: options.method,
         data: JSON.stringify(options.data),
